@@ -34,10 +34,12 @@ function App() {
     setComponent3Size({ width: ref.style.width, height: ref.style.height });
   };
 
+  console.log(process.env);
+
   const fetchComponent = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/component/details`
+        `${process.env.REACT_APP_SERVER_URL}/component/details`
       );
 
       setComponentData(response.data.data);
@@ -49,7 +51,7 @@ function App() {
   const fetchApiRequestCount = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8080/component/api/count`
+        `${process.env.REACT_APP_SERVER_URL}/component/api/count`
       );
 
       setAddApiCount(response.data.addApiCount);
@@ -67,7 +69,7 @@ function App() {
   const handleAddContent = async (componentId, componentContent) => {
     try {
       const response = await axios.post(
-        `http://localhost:8080/component/content/add`,
+        `${process.env.REACT_APP_SERVER_URL}/component/content/add`,
         {
           componentId,
           componentName: `Component-${componentId}`,
@@ -84,7 +86,7 @@ function App() {
   const handleUpdateContent = async (componentId, componentContent) => {
     try {
       const response = await axios.patch(
-        `http://localhost:8080/component/content/update`,
+        `${process.env.REACT_APP_SERVER_URL}/component/content/update`,
         {
           componentId,
           componentContent,

@@ -7,7 +7,7 @@ const executionTimeMiddleware = require("./middlewares/ExecutionTime.middleware"
 
 const app = express();
 
-app.use(cors());
+app.use(cors({ origin: ["https://data-neuron-assignment-mocha.vercel.app/"] }));
 app.use(express.json());
 app.use(executionTimeMiddleware);
 
